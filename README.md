@@ -123,7 +123,7 @@ with $\langle (\Delta O)^2 \rangle \approx \langle (\Delta O^\text{(appx)})^2 \r
 3. **Covariance under symmetry transformations**:  
    The expectation value $\langle O \rangle$ is **covariant** under a lattice symmetry transformation $g \in G$. We abbreviate: $\langle O^\text{(appx)}[U^g] \rangle = \langle O^{\text{(appx)},g}[U] \rangle$.
 
-### 📐 Improved Estimator
+### Improved Estimator
 
 Given these criteria, we construct the **improved estimator**:
 

@@ -7,7 +7,7 @@ The folllowing provides a brief introduction to Lattice QCD and the CAA techique
 
 ---
 
-## 📚 Basics of Lattice QCD
+## Basics of Lattice QCD
 Lattice quantum chromodynamics (QCD) is the standard non-perturbative framework for studying the strong nuclear force. In this section, we briefly introduce the essential ingredients, focusing on aspects relevant to simulation and data analysis.
 
 It is defined on a discretized Euclidean spacetime lattice with spacing $a$. The mathematical guiding principle for constructing the action of such a theory is to require gauge invariance under local SU(3) transformations. The Lattice QCD action is:
@@ -22,7 +22,7 @@ The fermionic fields live on **lattice sites**, while the gluonic fields are def
   <img src="figures/LatticeFields.png" alt="Lattice Fields" width="500"/>
 </p>
 
-### 🧮 Path Integral Formulation
+### Path Integral Formulation
 
 Physical observables are computed as **path integrals** over gauge fields $U$:
 
@@ -49,7 +49,7 @@ where the error scales with $1/\sqrt{N_\text{conf}}$ due to the central limit th
 
 ---
 
-## 🎯 Correlation Functions
+## Correlation Functions
 An especially important class of observables in Lattice QCD are **two-point correlation functions**. They quantify how strongly **quantum fluctuations** at two spacetime points are correlated. Physically, they represent the amplitude to **create a hadron** at one spacetime point and **annihilate it** at another. From their behavior, we can extract key properties of **hadrons**, particles composed of quarks, such as their **masses** and **decay constants**.
 
 Mathematically, two-point correlation functions decay **exponentially** with increasing Euclidean time separation $t$:
@@ -66,7 +66,7 @@ At sufficiently large time separations, the excited-state contributions are supp
 
 ---
 
-## ⚙️ Computational challenge
+## Computational challenge
 Both the **generation of gauge field configurations** and the **computation of correlation functions** in Lattice QCD are computationally intensive tasks.
 
 The primary bottleneck in both steps is the inversion of the **Dirac operator** $D_f$, a large, sparse matrix that encodes the dynamics of a given quark flavor $f$. Its dimension scales with the lattice volume $|\Lambda|$ and internal degrees of freedom:
@@ -75,12 +75,12 @@ $$
 \text{dim}(D_f) = |\Lambda| \times 12 \quad \text{(3 colors × 4 spins)}
 $$
 
-### 🔁 Cost 1: Gauge Field Generation
+### Cost 1: Gauge Field Generation
 To generate **independent gauge field configurations**, one must sample gauge field configuration from the correct probability distribution, which includes the **fermionic determinant** $\det D_f$. 
 This is usually achieved using algorithms such as the Hybrid Monte Carlo algorithm (proposed by [Duane et. al (1987)](https://doi.org/10.1016/0370-2693(87)91197-X)) which requires **repeated inversions** of the Hermitian operator $D_f^\dagger D_f$ and is therefore extremely expensive.
 
 
-### 🔁 Cost 2: Correlation Function Evaluation
+### Cost 2: Correlation Function Evaluation
 Once configurations are available, computing hadronic correlation functions requires solving large linear systems of the form:
 
 $$
@@ -93,7 +93,7 @@ The solution $\psi = D_f^{-1} \eta$ corresponds to a quark propagator from the s
 
 To reduce statistical noise in correlation functions, propagators must be computed from **multiple source positions** on each configuration. Since each solve is expensive, this cost can scale up quickly, making efficient use of computational resources essential.
 
-### 🖥️ Hardware Requirements
+### Hardware Requirements
 
 These computations typically require the usage of **supercomputers** such as [JUWELS](https://www.fz-juelich.de/en/ias/jsc/systems/supercomputers/juwels) at the Jülich Supercomputing Centre. Optimizing resource usage is therefore crucial: both in terms of **computational time** and **scientific throughput**.
 
@@ -101,7 +101,7 @@ This motivates the use of variance-reduction techniques like **CAA**, which aim 
 
 ---
 
-## 🚀 Covariant Approximation Averaging (CAA)
+## Covariant Approximation Averaging (CAA)
 
 To reduce the computational cost of evaluating observables like hadronic correlators, one can construct **improved estimators** that achieve lower statistical errors **without proportionally increasing computational effort**.
 

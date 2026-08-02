@@ -217,7 +217,7 @@ CAA is a physics-specific instance of [**control variates**](https://en.wikipedi
 
 The control-variates estimator for a target quantity $X$ introduces a second variable $Y$ that is correlated with $X$ and whose mean $\langle Y \rangle$ is known:
 
-$$ X^\star = X - c\,(Y - \langle Y \rangle). $$
+$$ X^\star = X - c \ (Y - \langle Y \rangle). $$
 
 This is unbiased for any coefficient $c$, since $\langle X^\star \rangle = \langle X \rangle$, and its variance is reduced when $X$ and $Y$ are strongly correlated.
 
